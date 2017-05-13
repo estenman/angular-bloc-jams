@@ -130,7 +130,6 @@
                 playSong(song);    
             }
         };
-        console.log(SongPlayer);
         return SongPlayer;
     }
     
