@@ -60,6 +60,15 @@
                 };
                 
                 /**
+                * @function thumbStyle
+                * @desc Changes the position of the seek bar thumb
+                * @returns {object} property width and value
+                */
+                scope.thumbStyle = function() {
+                    return {left: percentString()};
+                };
+                
+                /**
                 * @function onClickSeekBar
                 * @desc Changes the value based on where click occured on seek bar
                 * @param {event}
