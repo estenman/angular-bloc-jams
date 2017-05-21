@@ -49,6 +49,7 @@
             song.playing = true;
         };
 
+        
         /**
         * @function stopSong
         * @desc Stops playing the selected song and sets playing to false
@@ -85,7 +86,7 @@
         * @desc Current volume
         * @type {Number}
         */
-        SongPlayer.volume = null;
+        SongPlayer.volume = 50;
         /**
         * @function play
         * @desc Play current song
@@ -96,11 +97,15 @@
             if (SongPlayer.currentSong !== song) {
                 setSong(song);
                 playSong(song);
+                
             } else if (SongPlayer.currentSong === song) {
                 if (currentBuzzObject.isPaused()) {
                     playSong(song);
                 }
             }
+            currentBuzzObject.bind("ended", function () {
+            SongPlayer.next();
+        });
         };
         
         /**
@@ -146,6 +151,9 @@
                 setSong(song);
                 playSong(song);    
             }
+            currentBuzzObject.bind("ended", function () {
+            SongPlayer.next();
+        });
         };
         
         /**
@@ -169,6 +177,20 @@
                 currentBuzzObject.setVolume(volume);
             }
         };
+        
+        /**
+        * @function muteVolume
+        * @desc Mutes the song
+        */
+        
+        
+        SongPlayer.muteVolume = function() {           
+            if (currentBuzzObject.isMuted()) {
+                currentBuzzObject.unmute();
+            } else {
+                currentBuzzObject.mute();
+            }
+        };        
         
         return SongPlayer;
     }
