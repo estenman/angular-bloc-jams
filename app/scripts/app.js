@@ -21,6 +21,11 @@
                 url: '/collection',
                 controller: 'CollectionCtrl as collection',
                 templateUrl: '/templates/collection.html'
+        })           
+            .state('profile', {
+                url: '/profile',
+                controller: 'ProfileCtrl as profile',
+                templateUrl: '/templates/profile.html'
         });
     }
         
